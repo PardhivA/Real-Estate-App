@@ -12,7 +12,8 @@ export const signup = async (req,res, next) => {
         res.status(201).json('New User Created')
     }
     catch(error){
-                next(errorHandler(550, 'Internal Server error from function'));
+        // errorHandler(550, 'Internal Server error from function')
+                next(error);
         
     }
 }
