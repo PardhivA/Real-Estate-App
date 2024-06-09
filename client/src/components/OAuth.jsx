@@ -3,11 +3,13 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React from 'react'
 import { app } from '../firebase.js';
 import { useDispatch } from 'react-redux';
-import { signInSuccess } from '../redux/user/userSlice';
+import { signInSuccess } from '../redux/user/userSlice.js';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function OAuth() {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const handleGoogleAuth = async () => {
         try{
@@ -28,6 +30,8 @@ export default function OAuth() {
             })
 
             const data = await res.json()
+            console.log(data);
+            navigate('/')
             dispatch(signInSuccess(data))
         }
         catch(error){
