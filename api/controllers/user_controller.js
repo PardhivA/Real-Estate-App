@@ -2,7 +2,7 @@ import { errorHandler } from "../utils/error_handler.js";
 import bcryptjs from 'bcryptjs';
 import User from '../models/user_model.js';
 
-const userController = (req,res) => {
+export const userController = (req,res) => {
     res.send('Hello World!!')
 }
 
@@ -30,5 +30,19 @@ export const updateUserController = async (req,res,next) => {
     }
 }
 
+export const deleteUserController = async (req,res,next) => {
+    if(req.user.id != req.params.id) return next(errorHandler(401, "you are not allowed to delete this user"))
+    try{
+            
+            await User.findByIdAndDelete(req.params.id)
+            res.clearCookie('access_token')
+            res.status(200).json('User has been deleted')
+    }
+    catch(error){
+        next(error)
+    }
+}
+
 
 export default userController
+// export default deleteUserController
