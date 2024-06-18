@@ -15,6 +15,8 @@ export default function Profile() {
     const [fileUploadError, setFileUploadEror] = useState(false);
     const [formData, setFormData] = useState({})
     const [uploadSuccessful, setUploadSuccesful] = useState(false)
+    const [showListingsError, setShowListingsError] = useState(false);
+    const [listingsData, setListingsData] = useState([]);
     console.log(file);
     
 
@@ -122,6 +124,23 @@ export default function Profile() {
       }
  };
   
+  const handleShowListings = async()=>{
+    setShowListingsError(false);
+    try{
+      const result= await  fetch(`/api/user/listings/${currentUser._id}`);
+      const data = await result.json()
+      if(data.success === false){
+        setShowListingsError(true)
+        return;
+      }
+      setListingsData(data);
+      setShowListingsError(false);
+    }
+    catch(error){
+      setShowListingsError(true)
+    }
+  }
+
 
     return (
     <div className='p-3 max-w-lg mx-auto'>
@@ -158,6 +177,33 @@ export default function Profile() {
     </div>
     <span className='text-red-200'>{error ? `${error.message}` : ''}</span>
     <span className='text-green-200'>{uploadSuccessful ? "upload Successful" : ''}</span>
+    <button type='button' className='text-green-400 w-full hover:underline' onClick={handleShowListings}>show Listings</button>
+    <p className='text-red-500 mt-5'>{showListingsError ? 'Error Retrieving Listings' : ''}</p>
+    
+    {
+      listingsData.length > 0 && <div className='flex flex-col gap-4'>
+        <h1 className='text-center my-7 font-semibold text-2xl text-zinc-50'>Your Listings</h1>
+        {listingsData.map((listing) => 
+        (
+        
+        <div key={listing._id} className='flex justify-between items-center border rounded-md p-3 gap-4'>
+          <Link to={`/listings/${listing._id}`}>
+          <img src={listing.imageURLs[0]} className='w-14 h-16 object-contain hover:w-16'></img>
+           </Link>
+           <Link to={`/listings/${listing._id}`}>
+           <p className='text-zinc-300 font-semibold  truncate hover:text-xl'>{listing.name}</p>
+           </Link>
+           <div className='flex flex-col items-center'>
+            <button className='text-red-500 hover:underline'> DELETE</button>
+            <button className='text-green-400 hover:underline'> EDIT</button>
+           </div>
+           </div>
+           )
+       )}
+       </div>
+    }
+
+
   </div>  
   )
 }
