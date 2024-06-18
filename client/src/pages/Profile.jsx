@@ -4,10 +4,10 @@ import {getDownloadURL, getStorage, ref, uploadBytesResumable} from 'firebase/st
 import {app} from '../firebase.js'
 import { updateStart, updateSuccess, updateFailure, deleteStart, deleteSuccess, deleteFailure , signOutStart, signOutSuccess, signOutFailure} from '../redux/user/userSlice.js'
 import { useDispatch } from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 export default function Profile() {
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
     const {currentUser, loading, error} = useSelector(state => state.user)
     const fileRef = useRef(null)
     const [file,setFile] = useState(null)
@@ -210,8 +210,10 @@ export default function Profile() {
            <p className='text-zinc-300 font-semibold  truncate hover:text-xl'>{listing.name}</p>
            </Link>
            <div className='flex flex-col items-center'>
-            <button className='text-red-500 hover:underline' onClick={()=>{handleDeleteListing(index)}}> DELETE</button>
-            <button className='text-green-400 hover:underline'> EDIT</button>
+            <button type='button' className='text-red-500 hover:underline' onClick={()=>{handleDeleteListing(index)}}> DELETE</button>
+            <Link to={`/UpdateListing/${listing._id}`}>
+            <button  type='button' className='text-green-400 hover:underline'> EDIT</button>
+            </Link>
            </div>
            </div>
            )
