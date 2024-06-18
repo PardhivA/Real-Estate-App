@@ -1,6 +1,7 @@
 import { errorHandler } from "../utils/error_handler.js";
 import bcryptjs from 'bcryptjs';
 import User from '../models/user_model.js';
+import Listing from "../models/listing_model.js";
 
 export const userController = (req,res) => {
     res.send('Hello World!!')
@@ -42,6 +43,18 @@ export const deleteUserController = async (req,res,next) => {
         next(error)
     }
 }
+
+export const userListingsController = async (req,res,next) =>{
+    if(req.user.id != req.params.id) return next(errorHandler(401, "you are not allowed to see listings of other person"))
+    try{
+        const listings = await Listing.find({userRef: req.params.id})
+        res.status(200).json(listings)
+    }
+    catch(error){
+        next(error)
+    }
+    }
+
 
 
 export default userController
