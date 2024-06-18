@@ -5,12 +5,14 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 import SwiperCore from 'swiper'
 import {Navigation} from 'swiper/modules'
 import 'swiper/swiper-bundle.css'
+import { FaShare } from 'react-icons/fa'
 export default function Listing() {
     SwiperCore.use([Navigation])
 const params = useParams()
   const  [listing, setListing] = useState(false)
   const  [error, setError] = useState(false)
   const  [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false)
     useEffect(()=>{
         setLoading(true);
         setError(false);
@@ -52,9 +54,19 @@ const params = useParams()
                     </SwiperSlide>
                 ))}
             </Swiper>
+                <div  className='fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-zinc-800 cursor-pointer'>
+                    <FaShare onClick={()=>{
+                        navigator.clipboard.writeText(window.location.href)
+                        setCopied(true)
+                        setTimeout(() => {
+                            setCopied(false)
+                        }, 2000)
+                    }} className='text-zinc-300'></FaShare>
+
+                </div>
+                {copied && (<p className='fixed top-[23%] right-[5%] z-10 rounded-md bg-zinc-700 p-2 text-zinc-300' >url copied</p>)}
+
             </div>
-
-
         )}
     </main>
   )

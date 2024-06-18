@@ -35,10 +35,12 @@ export default function UpdateListing() {
            const res = await fetch(`/api/listing/get/${params.listingId}`)
            const data = await res.json()
            if(data.success === false){
-            console.log(data.message)
-            return 
-           } 
+               console.log(data.message)
+               return 
+            } 
+            console.log(data);
            setFormData(data)
+           console.log(formData.parking);
         }
         
         fetchListing()
@@ -168,23 +170,23 @@ export default function UpdateListing() {
       
       <div className='flex gap-4'>
         <div className = 'flex gap-2 items-center'>
-            <input type='checkbox' id = 'sale' className='w-5 scale-150' onChange={handleChange} value={formData.type === 'sale'}/>
+            <input type='checkbox' id = 'sale' className='w-5 scale-150' onChange={handleChange} checked={formData.type === 'sale'}/>
             <span className = 'text-white text-sm '>Sell  </span>
         </div>
         <div className = 'flex gap-2 items-center'>
-            <input type='checkbox' id = 'rent' className='w-5 scale-150' onChange={handleChange} value={formData.type === 'rent'}/>
+            <input type='checkbox' id = 'rent' className='w-5 scale-150' onChange={handleChange} checked={formData.type === 'rent'}/>
             <span className = 'text-white text-sm'>Rent</span>
         </div>
         <div className = 'flex gap-2 items-center'>
-            <input type='checkbox' id = 'parking' className='w-5 scale-150' onChange={handleChange} value={formData.parking}/>
+            <input type='checkbox' id = 'parking' className='w-5 scale-150' onChange={handleChange} checked={formData.parking}/>
             <span className = 'text-white text-sm'>Parking Spot</span>
         </div>
         <div className = 'flex gap-2 items-center'>
-            <input type='checkbox' id = 'furnsihed' className='w-5 scale-150' onChange={handleChange} value={formData.furnished}/>
+            <input type='checkbox' id = 'furnsihed' className='w-5 scale-150' onChange={handleChange} checked={formData.furnished}/>
             <span className = 'text-white text-sm'>Furnished</span>
         </div>
         <div className = 'flex gap-2 items-center'>
-            <input type='checkbox' id = 'offer' className='w-5 scale-150' onChange={handleChange} value={formData.offer}/>
+            <input type='checkbox' id = 'offer' className='w-5 scale-150' onChange={handleChange} checked={formData.offer}/>
             <span className = 'text-white text-sm'>Offer</span>
         </div>
       </div>
