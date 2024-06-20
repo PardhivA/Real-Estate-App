@@ -55,6 +55,18 @@ export const userListingsController = async (req,res,next) =>{
     }
     }
 
+    export const userDetailsController = async (req,res,next) =>{
+        try{
+            const user = await User.findById(req.params.id)
+            if(!user) next(errorHandler(404,"User data is unavailable"))
+            const {password: pass, ...rest} = user._doc
+                res.status(200).json(rest)
+        }
+        catch(error){
+            next(error)
+        }
+        }
+
 
 
 export default userController
