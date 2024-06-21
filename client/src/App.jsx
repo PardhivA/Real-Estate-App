@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import CreateListing from './pages/CreateListing';
 import UpdateListing from './pages/UpdateListing';
 import Listing from './pages/Listing';
+import Search from './pages/Search';
 export default function App() {
   return (<BrowserRouter>
   <Header />
@@ -19,6 +20,7 @@ export default function App() {
 <Route path='/SignIn' element={<Signin/>}/> 
 <Route path='/SignUp' element={<Signup />}/>
 <Route path='/listings/:listingId' element={<Listing />}/>
+<Route path='/Search' element={<Search />}/>
 <Route element={<PrivateRoute/>}>
 <Route path='/Profile' element={<Profile/>}/>
 <Route path='/CreateListing' element={<CreateListing/>}/> 
