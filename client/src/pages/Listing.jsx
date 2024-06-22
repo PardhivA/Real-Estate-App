@@ -81,7 +81,7 @@ export default function Listing() {
                 <div className='flex gap-4'>
                     <p className='bg-red-600 w-full max-w-[200px] text-white text-center p-1 rounded-md'>{listing.type==='rent' ? 'for Rent': 'for Sale'}</p>
                     {listing.offer ? 
-                  (  <p className='bg-green-600 w-full max-w-[200px] text-white text-center p-1 rounded-md'>{'₹ '} {+listing.regularPrice - +listing.discountPrice}  {' discount'}</p>)
+                  (  <p className='bg-green-600 w-full max-w-[200px] text-white text-center p-1 rounded-md'>{'₹ '} {+listing.regularPrice - +listing.discountPrice}  {' off'}</p>)
                      : <></>
                 }
                 </div>
