@@ -60,7 +60,7 @@ export default function Home() {
     </h1>
     <div className='text-zinc-300 text-sm sm:text-lg'>
     SoJOYrn is the best place to find your next memorable stay.
-    <br></br>
+    <br></br>  
     We have huge range of properties to choose from. 
     </div>
     <Link to={'/search'}
@@ -74,7 +74,7 @@ export default function Home() {
     {
       offerListings && offerListings.length > 0  && offerListings.map((listing)=>(
         <SwiperSlide key={listing._id}>
-          <div className='h-[500px]' key={listing._id} style={{background: `url(${listing.imageURLs[0]}) center no-repeat`, backgroundSize: 'cover'}}>
+          <div className='h-[800px]' key={listing._id} style={{background: `url(${listing.imageURLs[0]}) center no-repeat`, backgroundSize: 'cover'}}>
 
           </div>
         </SwiperSlide>
