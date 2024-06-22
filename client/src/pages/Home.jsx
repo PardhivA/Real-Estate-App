@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import 'swiper/css/bundle'
@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(()=>{
 
-    fetchSaleListings = async () => {
+    const fetchSaleListings = async () => {
       try{
         const res = await fetch(`api/listings/getListings?sale=true&limit=4`)
         const data = res.json()
@@ -24,7 +24,7 @@ export default function Home() {
       }
     }
 
-    fetchRentListings = async () => {
+    const fetchRentListings = async () => {
       try{
         const res = await fetch('/api/listing/getListings?rent=true&limit=4')
         const data = await res.json()
@@ -36,12 +36,12 @@ export default function Home() {
       }
     }
 
-    fetchOfferListings = async () => {
+    const fetchOfferListings = async () => {
       try{
         const res = await fetch('/api/listing/getListings?offer=true&limit=4')
         const data = await res.json()
         setOfferListings(data)
-        fetchRentListings
+        fetchRentListings()
       }
       catch(error){
 
@@ -52,13 +52,13 @@ export default function Home() {
 
   return (
    <div>
-    <div className='flex flex-col gap-6 p-28 px-3 max-w6xl mx-auto'>   
+    <div className='flex flex-col gap-6 p-20 px-3 max-w6xl mx-auto'>   
       <h1 className='text-zinc-200 font-bold text-3xl lg:text-6xl'>
       Find your your next <span className='bg-gradient-to-r from-amber-400 via-green-400 to-red-400 text-transparent bg-clip-text'>Sojourn</span>
       <br></br>
        with ease.  
     </h1>
-    <div className='text-zinc-300 text-xs sm:text-sm'>
+    <div className='text-zinc-300 text-sm sm:text-lg'>
     SoJOYrn is the best place to find your next memorable stay.
     <br></br>
     We have huge range of properties to choose from. 
@@ -73,8 +73,8 @@ export default function Home() {
     <Swiper navigation>
     {
       offerListings && offerListings.length > 0  && offerListings.map((listing)=>(
-        <SwiperSlide>
-          <div className='h-[500px]' key={listing._id} style={{background: `url(${listing.imageUrls[0]}) center no-repeat`, backgroundSize: 'cover'}}>
+        <SwiperSlide key={listing._id}>
+          <div className='h-[500px]' key={listing._id} style={{background: `url(${listing.imageURLs[0]}) center no-repeat`, backgroundSize: 'cover'}}>
 
           </div>
         </SwiperSlide>
