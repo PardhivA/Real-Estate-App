@@ -76,7 +76,7 @@ export default function Listing() {
                 </p>
                 <p className='flex items-center mt-6 my-2 gap-2 text-sm  text-zinc-200'>
                     <FaMapMarkerAlt className='text-zinc-200'></FaMapMarkerAlt>
-                    new Listing
+                    {listing.address}
                 </p>
                 <div className='flex gap-4'>
                     <p className='bg-red-600 w-full max-w-[200px] text-white text-center p-1 rounded-md'>{listing.type==='rent' ? 'for Rent': 'for Sale'}</p>
