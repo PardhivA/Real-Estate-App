@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <header className='bg-zinc-300 shadow-md'>
       <div className='flex justify-between items-center max-w-7xl mx-auto p-3'>
-     <Link to='/'>
+     <Link to='/' className='hover:scale-110'>
       <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
         <div className='bg-zinc-600 rounded-md p-1'>
         <span className='text-zinc-300'>
@@ -61,7 +61,7 @@ export default function Header() {
         </Link>
         <Link to='/Profile'>
         { currentUser ?
-          (<img src={currentUser.avatar} alt='profile' className='rounded-full h-8 w-8 object-cover'></img>)
+          (<img src={currentUser.avatar} alt='profile' className='rounded-full h-8 w-8 object-cover hover:scale-110'></img>)
         : (<li className=' sm:inline hover:underline'>
           Sign In
         </li>)
