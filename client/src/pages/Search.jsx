@@ -31,7 +31,7 @@ const handleChange = (e) =>{
     if(e.target.id === 'all' || e.target.id === 'rent' || e.target.id === 'sale'){
         setSideBarData({
             ...sideBarData,
-            type : e.target.checked ? e.target.id : (sideBarData.type === e.target.id ? 'all' : sideBarData.type)
+            type : e.target.id
         })
     }
     else if(e.target.id==='parking' || e.target.id ==='offer' || e.target.id === 'furnished'){
@@ -152,30 +152,30 @@ order : orderfromURL || 'desc',
                 <div className='flex flex-wrap gap-4 items-center text-white '>
                     <label className='text-zinc-200 font-semibold text-xl'>Type: </label>
                     <div className='flex gap-2'>
-                        <input type='checkbox' id='all' className='w-5' value={sideBarData.type==='all'} onChange={handleChange}></input>
+                        <input type='checkbox' id='all' className='w-5' checked={sideBarData.type==='all'} onChange={handleChange}></input>
                         <span>Rent & Sale</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type='checkbox' id='sale' className='w-5' value={sideBarData.type==='sale'} onChange={handleChange}></input>
+                        <input type='checkbox' id='sale' className='w-5' checked={sideBarData.type==='sale'} onChange={handleChange}></input>
                         <span>Sale</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type='checkbox' id='rent' className='w-5' value={sideBarData.type==='rent'} onChange={handleChange}></input>
+                        <input type='checkbox' id='rent' className='w-5' checked={sideBarData.type==='rent'} onChange={handleChange}></input>
                         <span>Rent</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type='checkbox' id='offer' className='w-5' value={sideBarData.offer} onChange={handleChange}></input>
+                        <input type='checkbox' id='offer' className='w-5' checked={sideBarData.offer} onChange={handleChange}></input>
                         <span>Offer</span>
                     </div>
                 </div>
                 <div className='flex flex-wrap gap-4 items-center text-white'>
                     <label className='text-zinc-200 font-semibold text-xl'>Amenities: </label>
                     <div className='flex gap-2'>
-                        <input type='checkbox' id='parking' className='w-5' value={sideBarData.parking} onChange={handleChange}></input>
+                        <input type='checkbox' id='parking' className='w-5' checked={sideBarData.parking} onChange={handleChange}></input>
                         <span>Parking</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type='checkbox' id='furnished' className='w-5' value={sideBarData.furnished} onChange={handleChange}></input>
+                        <input type='checkbox' id='furnished' className='w-5' checked={sideBarData.furnished} onChange={handleChange}></input>
                         <span>Furnished</span>
                     </div>
                     

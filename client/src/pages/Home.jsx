@@ -62,7 +62,7 @@ export default function Home() {
     <div className='text-zinc-300 text-sm sm:text-lg'>
     SoJOYrn is the best place to find your next memorable stay.
     <br></br>  
-    We have huge range of properties to choose from. 
+    We have a huge range of properties to choose from. 
     </div>
     <Link to={'/search'}
     className='text-xs sm:text-sm text-pink-400 font-bold hover:underline'

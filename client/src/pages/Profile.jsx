@@ -193,7 +193,7 @@ export default function Profile() {
     </div>
     <span className='text-red-200'>{error ? `${error.message}` : ''}</span>
     <span className='text-green-200'>{uploadSuccessful ? "upload Successful" : ''}</span>
-    <button type='button' className='text-green-400 w-full hover:underline' onClick={handleShowListings}>show Listings</button>
+    <button type='button' className='text-green-400 w-full hover:underline' onClick={handleShowListings}>My Listings</button>
     <p className='text-red-500 mt-5'>{showListingsError ? 'Error Retrieving Listings' : ''}</p>
     
     {
