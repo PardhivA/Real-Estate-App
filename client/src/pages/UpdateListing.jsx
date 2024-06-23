@@ -15,7 +15,7 @@ export default function UpdateListing() {
         type: 'rent',
         bedrooms: 1,
         bathrooms: 1, 
-        regularPrice: 50000,
+        regularPrice: 500000,
         discountPrice: 0,
         offer: false,
         parking: false,
@@ -193,16 +193,16 @@ export default function UpdateListing() {
 
         <div className='flex flex-wrap gap-6'>
             <div className='flex items-center gap-2'>
-                <input type='number' id='bedrooms' min='1' max='10' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.bedrooms}/>
+                <input type='number' id='bedrooms' min='1' max='50' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.bedrooms}/>
                 <p className='text-white'>Bedrooms</p>
             </div>
             <div className='flex items-center gap-2'>
-                <input type='number' id='bathrooms' min='1' max='10' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.bathrooms}/>
+                <input type='number' id='bathrooms' min='1' max='50' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.bathrooms}/>
                 <p className='text-white'>Bathrooms</p>
             </div>
 
             <div className='flex items-center gap-2'>
-                <input type='number' id='regularPrice' min='50' max='100000000' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.regularPrice}/>
+                <input type='number' id='regularPrice' min='50' max='1000000000' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.regularPrice}/>
                 <div className='flex flex-col items-center'>
                 <p className='text-white'>Regular Price (₹)</p>
 {formData.type=== 'rent' && 
@@ -211,7 +211,7 @@ export default function UpdateListing() {
                                 </div>
             </div>
             {formData.offer ? (<div className='flex items-center gap-2'>
-                <input type='number' id='discountPrice' min='0' max='100000000' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.discountPrice}/>
+                <input type='number' id='discountPrice' min='0' max='1000000000' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.discountPrice}/>
             <div className='flex flex-col items-center'>
                 <p className='text-white'>Discounted Price (₹)</p>
 {formData.type=== 'rent' && 
