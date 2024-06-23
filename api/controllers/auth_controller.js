@@ -3,6 +3,11 @@ import bcryptjs from 'bcryptjs';
 import { errorHandler } from "../utils/error_handler.js";
 import jwt from 'jsonwebtoken'
 
+const options = {
+    expiresIn: '15d' // Set the token to expire in 15 days
+  };
+  
+
 export const signup = async (req,res, next) => {
     console.log(req.body);
     const {username, email, password} = req.body;
@@ -28,10 +33,10 @@ export const signin = async (req, res, next) =>{
         if(!validUser) return next(errorHandler(404, 'User not found'))
         const validPassword = bcryptjs.compareSync(password, validUser.password)
         if(!validPassword) return next(errorHandler(401, 'Wrong credentials'))
-        const token = jwt.sign({ id: validUser._id}, process.env.JWT_SECRET)
+        const token = jwt.sign({ id: validUser._id}, process.env.JWT_SECRET,options)
         const {password: pass, ...rest } = validUser._doc; // to remove password before sending it to user
         res
-        .cookie('access_token', token, {httpOnly: true})
+        .cookie('access_token', token, { maxAge: 15 * 24 * 60 * 60 * 1000, httpOnly: true })
         .status(200)
         .json(rest)    
     }
@@ -54,18 +59,18 @@ export const google = async(req,res,next) =>{
                 avatar: req.body.photoURL
             }) 
             await new_user.save();
-        const token = jwt.sign({ id: new_user._id}, process.env.JWT_SECRET)
+        const token = jwt.sign({ id: new_user._id}, process.env.JWT_SECRET,options)
         const {password: pass, ...rest } = new_user._doc; // to remove password before sending it to user
         res
-        .cookie('access_token', token, {httpOnly: true})
+        .cookie('access_token', token, { maxAge: 15 * 24 * 60 * 60 * 1000, httpOnly: true })
         .status(200)
         .json(rest)     
         }
         else {  
-        const token = jwt.sign({ id: validUser._id}, process.env.JWT_SECRET)
+        const token = jwt.sign({ id: validUser._id}, process.env.JWT_SECRET,options)
         const {password: pass, ...rest } = validUser._doc; // to remove password before sending it to user
         res
-        .cookie('access_token', token, {httpOnly: true})
+        .cookie('access_token', token, { maxAge: 15 * 24 * 60 * 60 * 1000, httpOnly: true })
         .status(200)
         .json(rest)    
         }

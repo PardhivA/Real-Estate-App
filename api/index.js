@@ -30,7 +30,7 @@ app.listen(3000, () => {
     
 
 
-    app.use('/api/user', user_route)
+app.use('/api/user', user_route)
 app.use('/api/auth', auth_route)
 app.use('/api/listing', listing_route)
 
