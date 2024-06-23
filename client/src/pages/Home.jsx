@@ -15,8 +15,9 @@ export default function Home() {
 
     const fetchSaleListings = async () => {
       try{
-        const res = await fetch(`api/listings/getListings?sale=true&limit=4`)
-        const data = res.json()
+        const res = await fetch(`api/listing/getListings?type=sale&limit=4`)
+        const data = await res.json()
+        console.log(data);
         setSaleListings(data)
       }
       catch(error){
@@ -26,7 +27,7 @@ export default function Home() {
 
     const fetchRentListings = async () => {
       try{
-        const res = await fetch('/api/listing/getListings?rent=true&limit=4')
+        const res = await fetch('/api/listing/getListings?type=rent&limit=4')
         const data = await res.json()
         setRentListings(data)
         fetchSaleListings()

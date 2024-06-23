@@ -15,7 +15,7 @@ export default function UpdateListing() {
         type: 'rent',
         bedrooms: 1,
         bathrooms: 1, 
-        regularPrice: 50,
+        regularPrice: 50000,
         discountPrice: 0,
         offer: false,
         parking: false,
@@ -202,18 +202,18 @@ export default function UpdateListing() {
             </div>
 
             <div className='flex items-center gap-2'>
-                <input type='number' id='regularPrice' min='50' max='1000000' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.regularPrice}/>
+                <input type='number' id='regularPrice' min='50' max='100000000' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.regularPrice}/>
                 <div className='flex flex-col items-center'>
-                <p className='text-white'>Regular Price</p>
+                <p className='text-white'>Regular Price (₹)</p>
 {formData.type=== 'rent' && 
                 <span className='text-xs text-white'>(₹ / month)</span>
                 }
                                 </div>
             </div>
             {formData.offer ? (<div className='flex items-center gap-2'>
-                <input type='number' id='discountPrice' min='0' max='1000000' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.discountPrice}/>
+                <input type='number' id='discountPrice' min='0' max='100000000' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.discountPrice}/>
             <div className='flex flex-col items-center'>
-                <p className='text-white'>Discounted Price</p>
+                <p className='text-white'>Discounted Price (₹)</p>
 {formData.type=== 'rent' && 
                 <span className='text-xs text-white'>(₹ / month)</span>
                 }

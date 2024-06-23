@@ -8,7 +8,7 @@ export const userController = (req,res) => {
 }
 
 export const updateUserController = async (req,res,next) => {
-    if(req.user.id != req.params.id) return next(errorHandler(401, "you are not allowed to edit this user"))
+    if(req.user.id !== req.params.id) return next(errorHandler(401, "you are not allowed to edit this user"))
     try{
         if(req.body.password){
             req.body.password = bcryptjs.hashSync(req.body.password, 10)
@@ -32,7 +32,7 @@ export const updateUserController = async (req,res,next) => {
 }
 
 export const deleteUserController = async (req,res,next) => {
-    if(req.user.id != req.params.id) return next(errorHandler(401, "you are not allowed to delete this user"))
+    if(req.user.id !== req.params.id) return next(errorHandler(401, "you are not allowed to delete this user"))
     try{
             
             await User.findByIdAndDelete(req.params.id)
@@ -45,7 +45,7 @@ export const deleteUserController = async (req,res,next) => {
 }
 
 export const userListingsController = async (req,res,next) =>{
-    if(req.user.id != req.params.id) return next(errorHandler(401, "you are not allowed to see listings of other person"))
+    if(req.user.id !== req.params.id) return next(errorHandler(401, "you are not allowed to see listings of other person"))
     try{
         const listings = await Listing.find({userRef: req.params.id})
         res.status(200).json(listings)

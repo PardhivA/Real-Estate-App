@@ -151,7 +151,7 @@ export default function Profile() {
         console.log(data.message);
         return
       }  
-      setListingsData((prev) => prev.filter((listing, index) => index != listingIndex))
+      setListingsData((prev) => prev.filter((listing, index) => index !== listingIndex))
     }
       catch(error){
         console.log(error.message)
@@ -168,7 +168,7 @@ export default function Profile() {
       <p className='text-lg self-center'>
         {fileUploadError ? <span className='text-red-400'> Image Upload Error</span> : 
         fileUploadPercentage > 0 && fileUploadPercentage < 100 ? <span className='text-green-400'> {`File Upload Percentage: ${fileUploadPercentage}`}</span> :
-        fileUploadPercentage == 100 ? <span className='text-green-400'> File Uploaded Succesfully</span> :
+        fileUploadPercentage === 100 ? <span className='text-green-400'> File Uploaded Succesfully</span> :
         <span> </span>
         }
       </p>
