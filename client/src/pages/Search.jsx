@@ -18,9 +18,9 @@ const [loading, setLoading] = useState(false)
 const [listings, setListings] = useState([])
 const navigate = useNavigate()
 
-console.log(listings);
+// console.log(listings);
 
-console.log(sideBarData);
+// console.log(sideBarData);
 const handleChange = (e) =>{
     if(e.target.id==='searchTerm'){
         setSideBarData(

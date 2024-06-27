@@ -17,7 +17,7 @@ export default function Home() {
       try{
         const res = await fetch(`api/listing/getListings?type=sale&limit=4`)
         const data = await res.json()
-        console.log(data);
+        // console.log(data);
         setSaleListings(data)
       }
       catch(error){

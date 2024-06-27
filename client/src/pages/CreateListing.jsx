@@ -1,6 +1,6 @@
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import React, { useState } from 'react'
-import { app } from '../firebase';
+import { app } from '../../../api/firebase';
 import {useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
@@ -26,7 +26,7 @@ export default function CreateListing() {
     const [imageUploadError, setImageUploadError] = useState(false)
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(false)
-    console.log(files);
+    // console.log(files);
 
     
     const handleImageSubmit = (e) => {

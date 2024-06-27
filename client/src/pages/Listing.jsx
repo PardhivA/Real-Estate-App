@@ -30,7 +30,7 @@ export default function Listing() {
                 return 
             }
             setListing(data)
-            console.log(data.imageURLs.length);
+            // console.log(data.imageURLs.length);
             setLoading(false)
         }
         catch(err){

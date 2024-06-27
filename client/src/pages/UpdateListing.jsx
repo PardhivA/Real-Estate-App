@@ -1,6 +1,6 @@
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import React, { useEffect, useState } from 'react'
-import { app } from '../firebase';
+import { app } from '../../../api/firebase';
 import {useSelector} from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -26,21 +26,21 @@ export default function UpdateListing() {
     const [imageUploadError, setImageUploadError] = useState(false)
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(false)
-    console.log(files);
+    // console.log(files);
     const params= useParams();
     
     useEffect(()=>{
         const fetchListing = async () => {
-            console.log(params.listingId)
+            // console.log(params.listingId)
            const res = await fetch(`/api/listing/get/${params.listingId}`)
            const data = await res.json()
            if(data.success === false){
-               console.log(data.message)
+            //    console.log(data.message)
                return 
             } 
-            console.log(data);
+            // console.log(data);
            setFormData(data)
-           console.log(formData.parking);
+        //    console.log(formData.parking);
         }
         
         fetchListing()
