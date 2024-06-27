@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from 'react'
 import { useSelector } from 'react-redux'
 import {getDownloadURL, getStorage, ref, uploadBytesResumable} from 'firebase/storage'
-import {app} from '../../../api/firebase'
+import {app} from '../firebase.js'
 import { updateStart, updateSuccess, updateFailure, deleteStart, deleteSuccess, deleteFailure , signOutStart, signOutSuccess, signOutFailure} from '../redux/user/userSlice.js'
 import { useDispatch } from 'react-redux'
 import {Link, useNavigate} from 'react-router-dom'
